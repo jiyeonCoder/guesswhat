@@ -38,7 +38,7 @@ DEBUG = env("DEBUG")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 ALLOWED_HOSTS = []
 
 
@@ -51,12 +51,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "accounts",
-    "quizzes",
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-
+    "corsheaders",
+    "accounts",
+    "quizzes",
 ]
 
 REST_FRAMEWORK = {
@@ -68,6 +68,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
